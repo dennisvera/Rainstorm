@@ -15,7 +15,7 @@ final class RootViewController: UIViewController {
     private let dayViewController: DayViewController = {
         guard let dayViewController = UIStoryboard.main.instantiateViewController(withIdentifier: DayViewController.storyboardIdentifier) as? DayViewController else { fatalError("Unable to instantiate Day View Controller") }
         
-        // Configure day View Controller
+        // Configure Day View Controller
         dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         return dayViewController
@@ -24,7 +24,7 @@ final class RootViewController: UIViewController {
     private let weekViewController: WeekViewController = {
         guard let weekViewController = UIStoryboard.main.instantiateViewController(withIdentifier: WeekViewController.storyboardIdentifier) as? WeekViewController else { fatalError("Unable to instantiate Week View Controller") }
         
-        // Configure day View Controller
+        // Configure Week View Controller
         weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         return weekViewController
@@ -71,6 +71,7 @@ extension RootViewController {
             static let height: CGFloat = 200.0
         }
     }
+    
 }
 
 
