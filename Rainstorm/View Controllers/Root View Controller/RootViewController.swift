@@ -37,6 +37,8 @@ final class RootViewController: UIViewController {
 
         // Setup Child View Controllers
         setupChildViewControllers()
+        
+        fetchWetaherData()
     }
     
     // MARK: - Helper Method
@@ -61,7 +63,23 @@ final class RootViewController: UIViewController {
         dayViewController.didMove(toParentViewController: self)
         weekViewController.didMove(toParentViewController: self)
     }
-
+    
+    func fetchWetaherData() {
+        guard let baseUrl = URL(string: "https://api.darksky.net/forecast/") else { return }
+        
+        let authenticatedBaseUrl = baseUrl.appendingPathComponent("51880986ba359208b4f1cc85edb56a8e")
+        
+        let url = authenticatedBaseUrl.appendingPathComponent("\(40.7590562),\(-74.0042502)")
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("Request Did Fail: \(error)")
+            } else if let response = response {
+                print("Response: \n\(response)")
+            }
+        }.resume()
+    }
+    
 }
 
 extension RootViewController {
