@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E126701820FFF461001FDEAC /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126701720FFF461001FDEAC /* WeatherRequest.swift */; };
+		E126701B20FFF630001FDEAC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126701A20FFF630001FDEAC /* Configuration.swift */; };
 		E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */; };
 		E1B9733920FE9AB300A6A1AB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733820FE9AB300A6A1AB /* RootViewController.swift */; };
 		E1B9733C20FE9AB300A6A1AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B9733A20FE9AB300A6A1AB /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E126701720FFF461001FDEAC /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
+		E126701A20FFF630001FDEAC /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E1B9733320FE9AB300A6A1AB /* Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B9733820FE9AB300A6A1AB /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E126701620FFF434001FDEAC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E126701720FFF461001FDEAC /* WeatherRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E126701920FFF616001FDEAC /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E126701A20FFF630001FDEAC /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		E1B9732A20FE9AB300A6A1AB = {
 			isa = PBXGroup;
 			children = (
@@ -62,10 +82,12 @@
 		E1B9733520FE9AB300A6A1AB /* Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
-				E1B9735520FEAAC500A6A1AB /* Extensions */,
 				E1B9734820FE9B3000A6A1AB /* Application Delegate */,
+				E126701920FFF616001FDEAC /* Configuration */,
+				E126701620FFF434001FDEAC /* Models */,
 				E1B9734920FE9B6C00A6A1AB /* View Controllers */,
 				E1B9734B20FE9C7100A6A1AB /* Storyboards */,
+				E1B9735520FEAAC500A6A1AB /* Extensions */,
 				E1B9734C20FE9CA000A6A1AB /* Resources */,
 				E1B9734D20FE9CB700A6A1AB /* Supporting Files */,
 			);
@@ -232,6 +254,8 @@
 				E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */,
 				E1B9735420FEA9B100A6A1AB /* WeekViewController.swift in Sources */,
 				E1B9735120FEA87900A6A1AB /* DayViewController.swift in Sources */,
+				E126701820FFF461001FDEAC /* WeatherRequest.swift in Sources */,
+				E126701B20FFF630001FDEAC /* Configuration.swift in Sources */,
 				E1B9735720FEAAF300A6A1AB /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
