@@ -14,7 +14,7 @@ protocol WeatherData {
     var longitude: Double { get }
     
     var current: CurrentWeatherConditions { get }
-    var forecast: [WeatherConditions] { get }
+    var forecast: [ForecastWeatherConditions] { get }
 }
 
 protocol WeatherConditions {

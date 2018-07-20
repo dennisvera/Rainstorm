@@ -9,6 +9,14 @@
 import UIKit
 
 final class DayViewController: UIViewController {
+    
+    var viewModel: DayViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            
+            setupViewModel(with: viewModel)
+        }
+    }
 
     // MARK: - View Life Cycle
 
@@ -19,11 +27,15 @@ final class DayViewController: UIViewController {
         setupView()
     }
     
-    // MARK: - Helper Method
+    // MARK: - Helper Methods
     
     private func setupView() {
         // Configure View
         view.backgroundColor = .blue
+    }
+    
+    private func setupViewModel(with viewModel: DayViewModel) {
+        print("DayViewModel: \n\(viewModel)\n")
     }
     
 }

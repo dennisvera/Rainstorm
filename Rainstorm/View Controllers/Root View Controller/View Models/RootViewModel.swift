@@ -40,7 +40,7 @@ class RootViewModel {
         // Create Data Task
         URLSession.shared.dataTask(with: weatherRequest.url) { [weak self] (data, response, error) in
             if let response = response as? HTTPURLResponse {
-                print("Response Status Code: \(response.statusCode)")
+                print("Response Status Code: \(response.statusCode)\n")
             }
             
             if let error = error {
@@ -65,3 +65,9 @@ class RootViewModel {
             }.resume()
     }
 }
+
+
+
+
+
+

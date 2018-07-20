@@ -9,6 +9,14 @@
 import UIKit
 
 final class WeekViewController: UIViewController {
+    
+    var viewModel: WeekViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            
+            setupViewModel(with: viewModel)
+        }
+    }
 
     // MARK: - View Life Cycle
 
@@ -25,5 +33,10 @@ final class WeekViewController: UIViewController {
         // Configure View
         view.backgroundColor = .green
     }
+    
+    private func setupViewModel(with viewModel: WeekViewModel) {
+        print("WeekViewModel: \n\(viewModel)\n")
+    }
+    
 
 }
