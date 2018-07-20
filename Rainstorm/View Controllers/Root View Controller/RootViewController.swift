@@ -86,12 +86,18 @@ final class RootViewController: UIViewController {
     
     private func setupViewModel(with viewModel: RootViewModel) {
         // Configure View Model
-        viewModel.didFetchWeatherData = { [weak self] (data, error) in
+        viewModel.didFetchWeatherData = { [weak self] (weatherData, error) in
             if let _ = error {
                 // Notify User
                 self?.presentAlert(of: .noWeatherDataAvailable)
-            } else if let data = data as? DarkSkyResponse {
-                print("Data:\n\(data.forecast)")
+            } else if let weatherData = weatherData {
+                let dayViewModel = DayViewModel(weatherData: weatherData.current)
+                
+                self?.dayViewController.viewModel = dayViewModel
+
+                let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
+                
+                self?.weekViewController.viewModel = weekViewModel
             } else {
                 // Notify user
                 self?.presentAlert(of: .noWeatherDataAvailable)

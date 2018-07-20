@@ -12,6 +12,8 @@
 		E126701E21000C14001FDEAC /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126701D21000C14001FDEAC /* RootViewModel.swift */; };
 		E15696872101497B0015B24A /* DarkSkyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15696862101497B0015B24A /* DarkSkyResponse.swift */; };
 		E156968A21024A0D0015B24A /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968921024A0D0015B24A /* WeatherData.swift */; };
+		E156968D21026BDD0015B24A /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968C21026BDD0015B24A /* DayViewModel.swift */; };
+		E156969021026C450015B24A /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968F21026C450015B24A /* WeekViewModel.swift */; };
 		E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */; };
 		E1B9733920FE9AB300A6A1AB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733820FE9AB300A6A1AB /* RootViewController.swift */; };
 		E1B9733C20FE9AB300A6A1AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B9733A20FE9AB300A6A1AB /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		E126701D21000C14001FDEAC /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		E15696862101497B0015B24A /* DarkSkyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyResponse.swift; sourceTree = "<group>"; };
 		E156968921024A0D0015B24A /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		E156968C21026BDD0015B24A /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
+		E156968F21026C450015B24A /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		E1B9733320FE9AB300A6A1AB /* Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B9733820FE9AB300A6A1AB /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,22 @@
 				E156968921024A0D0015B24A /* WeatherData.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E156968B21026BB10015B24A /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				E156968C21026BDD0015B24A /* DayViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		E156968E21026C300015B24A /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				E156968F21026C450015B24A /* WeekViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		E1B9732A20FE9AB300A6A1AB = {
@@ -182,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				E1B9735020FEA87900A6A1AB /* DayViewController.swift */,
+				E156968B21026BB10015B24A /* View Models */,
 			);
 			path = "Day View Controller";
 			sourceTree = "<group>";
@@ -190,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				E1B9735320FEA9B100A6A1AB /* WeekViewController.swift */,
+				E156968E21026C300015B24A /* View Models */,
 			);
 			path = "Week View Controller";
 			sourceTree = "<group>";
@@ -281,10 +303,12 @@
 				E1B9735120FEA87900A6A1AB /* DayViewController.swift in Sources */,
 				E156968A21024A0D0015B24A /* WeatherData.swift in Sources */,
 				E126701820FFF461001FDEAC /* WeatherRequest.swift in Sources */,
+				E156969021026C450015B24A /* WeekViewModel.swift in Sources */,
 				E126701B20FFF630001FDEAC /* Configuration.swift in Sources */,
 				E126701E21000C14001FDEAC /* RootViewModel.swift in Sources */,
 				E15696872101497B0015B24A /* DarkSkyResponse.swift in Sources */,
 				E1B9735720FEAAF300A6A1AB /* UIViewController.swift in Sources */,
+				E156968D21026BDD0015B24A /* DayViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
