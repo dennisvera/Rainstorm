@@ -88,14 +88,18 @@ final class RootViewController: UIViewController {
         // Configure View Model
         viewModel.didFetchWeatherData = { [weak self] (data, error) in
             if let _ = error {
+                // Notify User
                 self?.presentAlert(of: .noWeatherDataAvailable)
-            } else if let data = data {
-                print("Data:\n\(data)")
+            } else if let data = data as? DarkSkyResponse {
+                print("Data:\n\(data.forecast)")
             } else {
+                // Notify user
                 self?.presentAlert(of: .noWeatherDataAvailable)
             }
         }
     }
+    
+    // MARK: -
     
     private func presentAlert(of alertType: AlertType) {
         let title: String

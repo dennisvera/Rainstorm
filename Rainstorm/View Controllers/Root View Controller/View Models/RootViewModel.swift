@@ -10,13 +10,15 @@ import Foundation
 
 class RootViewModel {
     
+    // MARK: Types
+    
     enum WeatherDataError: Error {
         case noWeatherDataAvailable
     }
     
     // MARK: - Typealias
     
-    typealias DidFetchWeatherDataCompletion = (DarkSkyResponse?, WeatherDataError?) -> Void
+    typealias DidFetchWeatherDataCompletion = (WeatherData?, WeatherDataError?) -> Void
     
     // MARK - Properties
     
