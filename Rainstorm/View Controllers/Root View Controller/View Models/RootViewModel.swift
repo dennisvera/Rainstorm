@@ -10,28 +10,55 @@ import Foundation
 
 class RootViewModel {
     
-    typealias DidFetchWeatherDataCompletion = (Data?, Error?) -> Void
+    enum WeatherDataError: Error {
+        case noWeatherDataAvailable
+    }
+    
+    // MARK: - Typealias
+    
+    typealias DidFetchWeatherDataCompletion = (DarkSkyResponse?, WeatherDataError?) -> Void
+    
+    // MARK - Properties
     
     var didFetchWeatherData: DidFetchWeatherDataCompletion?
     
+    // MARK: - Initialization
+    
     init() {
+        // Fetch Wetaher Data
         fetchWeatherData()
     }
     
-    // MARK: -
+    // MARK: - Helper Methods
     
     func fetchWeatherData() {
-        // Create URL
+        // Initialize Weather Request
         let weatherRequest = WeatherRequest(baseUrl: WeatherService.authenticatedBaseUrl, location: Defaults.location)
         
         // Create Data Task
         URLSession.shared.dataTask(with: weatherRequest.url) { [weak self] (data, response, error) in
+            if let response = response as? HTTPURLResponse {
+                print("Response Status Code: \(response.statusCode)")
+            }
+            
             if let error = error {
-                self?.didFetchWeatherData?(nil, error)
+                print("Unable to Fetch Wetaher Data \(error)")
+                
+                self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
             } else if let data = data {
-                self?.didFetchWeatherData?(data, nil)
+                let decoder = JSONDecoder()
+                
+                do {
+                    let darkSkyResponse = try decoder.decode(DarkSkyResponse.self, from: data)
+                    
+                    self?.didFetchWeatherData?(darkSkyResponse, nil)
+                } catch {
+                    print("Uneable to Decode JSON Response: \(error)")
+                    
+                    self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
+                }
             } else {
-                self?.didFetchWeatherData?(nil, nil)
+                self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
             }
             }.resume()
     }
