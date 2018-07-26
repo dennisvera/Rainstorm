@@ -10,6 +10,8 @@ import UIKit
 
 final class WeekViewController: UIViewController {
     
+    // MARK: - Properties
+
     var viewModel: WeekViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }

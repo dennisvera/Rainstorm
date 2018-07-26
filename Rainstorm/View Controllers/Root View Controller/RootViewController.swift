@@ -14,13 +14,11 @@ final class RootViewController: UIViewController {
         case noWeatherDataAvailable
     }
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var viewModel: RootViewModel? {
         didSet {
-            guard let viewModel = viewModel else {
-                return
-            }
+            guard let viewModel = viewModel else { return }
             
             // Setup View Model
             setupViewModel(with: viewModel)
@@ -46,12 +44,12 @@ final class RootViewController: UIViewController {
         
         return weekViewController
     }()
-
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Setup Child View Controllers
         setupChildViewControllers()        
     }
@@ -69,8 +67,7 @@ final class RootViewController: UIViewController {
         dayViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         dayViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         dayViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        dayViewController.view.heightAnchor.constraint(equalToConstant: Layout.DayView.height).isActive = true
-
+        
         // Configure Week View
         weekViewController.view.topAnchor.constraint(equalTo: dayViewController.view.bottomAnchor).isActive = true
         weekViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -94,7 +91,7 @@ final class RootViewController: UIViewController {
                 let dayViewModel = DayViewModel(weatherData: weatherData.current)
                 
                 self?.dayViewController.viewModel = dayViewModel
-
+                
                 let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
                 
                 self?.weekViewController.viewModel = weekViewModel
@@ -108,6 +105,7 @@ final class RootViewController: UIViewController {
     // MARK: -
     
     private func presentAlert(of alertType: AlertType) {
+        // Helpers
         let title: String
         let message: String
         
@@ -127,15 +125,6 @@ final class RootViewController: UIViewController {
     
 }
 
-extension RootViewController {
-    
-    fileprivate enum Layout {
-        enum DayView {
-            static let height: CGFloat = 200.0
-        }
-    }
-    
-}
 
 
 
