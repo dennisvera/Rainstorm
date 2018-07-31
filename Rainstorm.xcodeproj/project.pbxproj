@@ -14,6 +14,7 @@
 		E156968A21024A0D0015B24A /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968921024A0D0015B24A /* WeatherData.swift */; };
 		E156968D21026BDD0015B24A /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968C21026BDD0015B24A /* DayViewModel.swift */; };
 		E156969021026C450015B24A /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968F21026C450015B24A /* WeekViewModel.swift */; };
+		E1A256452110C3B800E6BF6A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A256442110C3B700E6BF6A /* Styles.swift */; };
 		E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */; };
 		E1B9733920FE9AB300A6A1AB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733820FE9AB300A6A1AB /* RootViewController.swift */; };
 		E1B9733C20FE9AB300A6A1AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B9733A20FE9AB300A6A1AB /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		E156968921024A0D0015B24A /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		E156968C21026BDD0015B24A /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		E156968F21026C450015B24A /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
+		E1A256442110C3B700E6BF6A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		E1B9733320FE9AB300A6A1AB /* Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B9733820FE9AB300A6A1AB /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				E126701A20FFF630001FDEAC /* Configuration.swift */,
+				E1A256442110C3B700E6BF6A /* Styles.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -126,10 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				E1B9734820FE9B3000A6A1AB /* Application Delegate */,
-				E126701920FFF616001FDEAC /* Configuration */,
-				E1B9734920FE9B6C00A6A1AB /* View Controllers */,
 				E126701620FFF434001FDEAC /* Models */,
+				E1B9734920FE9B6C00A6A1AB /* View Controllers */,
 				E1B9734B20FE9C7100A6A1AB /* Storyboards */,
+				E126701920FFF616001FDEAC /* Configuration */,
 				E1569688210249720015B24A /* Protocols */,
 				E1B9735520FEAAC500A6A1AB /* Extensions */,
 				E1B9734C20FE9CA000A6A1AB /* Resources */,
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1B9735920FEAB8E00A6A1AB /* UIStoryboard.swift in Sources */,
+				E1A256452110C3B800E6BF6A /* Styles.swift in Sources */,
 				E1B9733920FE9AB300A6A1AB /* RootViewController.swift in Sources */,
 				E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */,
 				E1B9735420FEA9B100A6A1AB /* WeekViewController.swift in Sources */,

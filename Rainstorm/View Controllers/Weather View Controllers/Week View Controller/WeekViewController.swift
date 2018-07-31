@@ -33,7 +33,7 @@ final class WeekViewController: UIViewController {
     
     private func setupView() {
         // Configure View
-        view.backgroundColor = .green
+        view.backgroundColor = .blue
     }
     
     private func setupViewModel(with viewModel: WeekViewModel) {

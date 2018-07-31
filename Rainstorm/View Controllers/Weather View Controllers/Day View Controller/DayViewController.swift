@@ -18,8 +18,8 @@ final class DayViewController: UIViewController {
     
     @IBOutlet var dateLabel: UILabel! {
         didSet {
-            dateLabel.textColor = UIColor(red: 0.31, green: 0.72, blue: 0.83, alpha: 1.0)
-            dateLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .heavy)
+            dateLabel.textColor = UIColor.Rainstorm.baseTextColor
+            dateLabel.font = UIFont.Rainstorm.heavyLarge
         }
     }
     
@@ -34,7 +34,7 @@ final class DayViewController: UIViewController {
         didSet {
             for label in regularLabels {
                 label.textColor = .black
-                label.font = UIFont.systemFont(ofSize: 17.0, weight: .light)
+                label.font = UIFont.Rainstorm.lightRegular
             }
         }
     }
@@ -43,7 +43,7 @@ final class DayViewController: UIViewController {
         didSet {
             for label in smallLabels {
                 label.textColor = .black
-                label.font = UIFont.systemFont(ofSize: 15.0, weight: .light)
+                label.font = UIFont.Rainstorm.lightSmall
             }
         }
     }
@@ -71,7 +71,7 @@ final class DayViewController: UIViewController {
     
     private func setupView() {
         // Configure View
-        view.backgroundColor = .blue
+        view.backgroundColor = .green
     }
     
     private func setupViewModel(with viewModel: DayViewModel) {
