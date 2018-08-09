@@ -15,6 +15,7 @@ final class DayViewController: UIViewController {
     @IBOutlet var temparatureLabel: UILabel!
     @IBOutlet var windSpeedLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     @IBOutlet var dateLabel: UILabel! {
         didSet {
@@ -23,10 +24,10 @@ final class DayViewController: UIViewController {
         }
     }
     
-    @IBOutlet var timeLabel: UILabel!
     @IBOutlet var iconImageView: UIImageView! {
         didSet {
-           iconImageView.contentMode = .scaleAspectFill
+           iconImageView.contentMode = .scaleAspectFit
+            iconImageView.tintColor = UIColor.Rainstorm.baseTintColor
         }
     }
     
@@ -47,6 +48,22 @@ final class DayViewController: UIViewController {
             }
         }
     }
+    
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            activityIndicatorView.startAnimating()
+            activityIndicatorView.hidesWhenStopped = true
+        }
+    }
+    
+    @IBOutlet var weatherDataViews: [UIView]! {
+        didSet {
+            for view in weatherDataViews {
+                view.isHidden = true
+            }
+        }
+    }
+
     
     //MARK: - Properties
     
@@ -71,11 +88,34 @@ final class DayViewController: UIViewController {
     
     private func setupView() {
         // Configure View
-        view.backgroundColor = .green
+        view.backgroundColor = UIColor.Rainstorm.lightBackgroundColor
     }
     
     private func setupViewModel(with viewModel: DayViewModel) {
-        print("DayViewModel: \n\(viewModel)\n")
+        activityIndicatorView.stopAnimating()
+        
+        dateLabel.text = viewModel.date
+        timeLabel.text = viewModel.time
+        windSpeedLabel.text = viewModel.windSpeed
+        temparatureLabel.text = viewModel.temperature
+        descriptionLabel.text = viewModel.summary
+        
+        iconImageView.image = viewModel.image
+        
+        for view in weatherDataViews {
+            view.isHidden = false
+        }
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
