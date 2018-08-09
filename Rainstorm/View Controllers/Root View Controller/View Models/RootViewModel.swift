@@ -43,30 +43,34 @@ class RootViewModel {
                 print("Response Status Code: \(response.statusCode)\n")
             }
             
-            if let error = error {
-                print("Unable to Fetch Wetaher Data \(error)")
-                
-                self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
-            } else if let data = data {
-                // Initialize JSON Decoder
-                let decoder = JSONDecoder()
-                
-                do {
-                    // Decode JSON Response
-                    let darkSkyResponse = try decoder.decode(DarkSkyResponse.self, from: data)
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Unable to Fetch Wetaher Data \(error)")
                     
-                    // Invoke Completion Handler
-                    self?.didFetchWeatherData?(darkSkyResponse, nil)
-                } catch {
-                    print("Uneable to Decode JSON Response: \(error)")
+                    self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
+                } else if let data = data {
+                    // Initialize JSON Decoder
+                    let decoder = JSONDecoder()
                     
-                    // Invoke Completion Handler
+                    decoder.dateDecodingStrategy = .secondsSince1970
+                    
+                    do {
+                        // Decode JSON Response
+                        let darkSkyResponse = try decoder.decode(DarkSkyResponse.self, from: data)
+                        
+                        // Invoke Completion Handler
+                        self?.didFetchWeatherData?(darkSkyResponse, nil)
+                    } catch {
+                        print("Uneable to Decode JSON Response: \(error)")
+                        
+                        // Invoke Completion Handler
+                        self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
+                    }
+                } else {
                     self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
                 }
-            } else {
-                self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
             }
-            }.resume()
+        }.resume()
     }
 }
 

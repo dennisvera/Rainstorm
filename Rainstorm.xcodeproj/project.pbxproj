@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10934BB211CE40A0076237B /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10934BA211CE40A0076237B /* UIImage.swift */; };
 		E126701820FFF461001FDEAC /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126701720FFF461001FDEAC /* WeatherRequest.swift */; };
 		E126701B20FFF630001FDEAC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126701A20FFF630001FDEAC /* Configuration.swift */; };
 		E126701E21000C14001FDEAC /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126701D21000C14001FDEAC /* RootViewModel.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E10934BA211CE40A0076237B /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		E126701720FFF461001FDEAC /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		E126701A20FFF630001FDEAC /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E126701D21000C14001FDEAC /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				E1B9735620FEAAF300A6A1AB /* UIViewController.swift */,
 				E1B9735820FEAB8E00A6A1AB /* UIStoryboard.swift */,
+				E10934BA211CE40A0076237B /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */,
 				E1B9735420FEA9B100A6A1AB /* WeekViewController.swift in Sources */,
 				E1B9735120FEA87900A6A1AB /* DayViewController.swift in Sources */,
+				E10934BB211CE40A0076237B /* UIImage.swift in Sources */,
 				E156968A21024A0D0015B24A /* WeatherData.swift in Sources */,
 				E126701820FFF461001FDEAC /* WeatherRequest.swift in Sources */,
 				E156969021026C450015B24A /* WeekViewModel.swift in Sources */,

@@ -18,9 +18,15 @@ extension UIColor {
             return baseColor
         }
         
+        static var baseTintColor: UIColor {
+        return baseColor
+        }
+        
         static var baseBackgroundColor: UIColor {
             return baseColor
         }
+        
+        static let lightBackgroundColor: UIColor = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1.0)
     }
 }
 

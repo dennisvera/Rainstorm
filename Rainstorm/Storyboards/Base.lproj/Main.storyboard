@@ -70,6 +70,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CI5-Ir-c3d">
+                                <rect key="frame" x="177" y="142" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -81,17 +84,20 @@
                             <constraint firstItem="rQs-OS-jje" firstAttribute="leading" secondItem="0Gi-xe-iAR" secondAttribute="trailing" priority="250" constant="8" id="LqA-y6-Ujg"/>
                             <constraint firstItem="S0g-OV-0H4" firstAttribute="bottom" secondItem="07p-lx-1u2" secondAttribute="bottom" priority="250" constant="20" id="MVQ-yR-Kq1"/>
                             <constraint firstItem="07p-lx-1u2" firstAttribute="centerX" secondItem="XZE-wk-Bky" secondAttribute="centerX" id="OH2-GO-KuF"/>
+                            <constraint firstItem="CI5-Ir-c3d" firstAttribute="centerY" secondItem="0Gi-xe-iAR" secondAttribute="centerY" id="QHY-67-Qbd"/>
                             <constraint firstItem="SSH-zJ-x1h" firstAttribute="top" secondItem="Sn2-Jz-g9J" secondAttribute="bottom" constant="8" id="QJC-rJ-f8H"/>
                             <constraint firstItem="0Gi-xe-iAR" firstAttribute="leading" secondItem="2HL-Bt-UWb" secondAttribute="trailing" priority="250" constant="8" id="bsP-Cb-1E8"/>
                             <constraint firstItem="rQs-OS-jje" firstAttribute="centerY" secondItem="0Gi-xe-iAR" secondAttribute="centerY" id="dVE-fF-Tin"/>
                             <constraint firstItem="SSH-zJ-x1h" firstAttribute="centerX" secondItem="Sn2-Jz-g9J" secondAttribute="centerX" id="kLr-97-JOj"/>
                             <constraint firstItem="2HL-Bt-UWb" firstAttribute="centerY" secondItem="0Gi-xe-iAR" secondAttribute="centerY" id="lcn-3l-hDH"/>
+                            <constraint firstItem="CI5-Ir-c3d" firstAttribute="centerX" secondItem="0Gi-xe-iAR" secondAttribute="centerX" id="tkg-eO-0kr"/>
                             <constraint firstItem="0Gi-xe-iAR" firstAttribute="top" secondItem="SSH-zJ-x1h" secondAttribute="bottom" constant="20" id="xgC-up-d9f"/>
                             <constraint firstItem="Sn2-Jz-g9J" firstAttribute="top" secondItem="S0g-OV-0H4" secondAttribute="top" constant="8" id="zOH-RG-cQM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S0g-OV-0H4"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="CI5-Ir-c3d" id="htW-Zr-7Vf"/>
                         <outlet property="dateLabel" destination="Sn2-Jz-g9J" id="6jj-Y0-a98"/>
                         <outlet property="descriptionLabel" destination="07p-lx-1u2" id="6nz-vK-9OX"/>
                         <outlet property="iconImageView" destination="0Gi-xe-iAR" id="5Vg-ac-Zn4"/>
@@ -102,6 +108,12 @@
                         <outletCollection property="regularLabels" destination="rQs-OS-jje" collectionClass="NSMutableArray" id="mIT-HQ-S6f"/>
                         <outletCollection property="smallLabels" destination="07p-lx-1u2" collectionClass="NSMutableArray" id="27O-hq-Ndr"/>
                         <outletCollection property="smallLabels" destination="SSH-zJ-x1h" collectionClass="NSMutableArray" id="zvO-92-vcL"/>
+                        <outletCollection property="weatherDataViews" destination="Sn2-Jz-g9J" collectionClass="NSMutableArray" id="ypE-UJ-dFn"/>
+                        <outletCollection property="weatherDataViews" destination="SSH-zJ-x1h" collectionClass="NSMutableArray" id="nvh-c2-ENv"/>
+                        <outletCollection property="weatherDataViews" destination="2HL-Bt-UWb" collectionClass="NSMutableArray" id="1a0-ft-Qoc"/>
+                        <outletCollection property="weatherDataViews" destination="rQs-OS-jje" collectionClass="NSMutableArray" id="r0G-eq-cFZ"/>
+                        <outletCollection property="weatherDataViews" destination="0Gi-xe-iAR" collectionClass="NSMutableArray" id="i6x-Bg-t7Q"/>
+                        <outletCollection property="weatherDataViews" destination="07p-lx-1u2" collectionClass="NSMutableArray" id="pW7-eT-RCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D91-mt-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
