@@ -105,16 +105,16 @@
                         <outlet property="temparatureLabel" destination="2HL-Bt-UWb" id="VN0-R5-QDq"/>
                         <outlet property="timeLabel" destination="SSH-zJ-x1h" id="1Bh-oc-EET"/>
                         <outlet property="windSpeedLabel" destination="rQs-OS-jje" id="eay-g1-0f5"/>
-                        <outletCollection property="regularLabels" destination="2HL-Bt-UWb" collectionClass="NSMutableArray" id="b0Q-PP-s5n"/>
-                        <outletCollection property="regularLabels" destination="rQs-OS-jje" collectionClass="NSMutableArray" id="mIT-HQ-S6f"/>
-                        <outletCollection property="smallLabels" destination="07p-lx-1u2" collectionClass="NSMutableArray" id="27O-hq-Ndr"/>
-                        <outletCollection property="smallLabels" destination="SSH-zJ-x1h" collectionClass="NSMutableArray" id="zvO-92-vcL"/>
                         <outletCollection property="weatherDataViews" destination="Sn2-Jz-g9J" collectionClass="NSMutableArray" id="ypE-UJ-dFn"/>
                         <outletCollection property="weatherDataViews" destination="SSH-zJ-x1h" collectionClass="NSMutableArray" id="nvh-c2-ENv"/>
                         <outletCollection property="weatherDataViews" destination="2HL-Bt-UWb" collectionClass="NSMutableArray" id="1a0-ft-Qoc"/>
                         <outletCollection property="weatherDataViews" destination="rQs-OS-jje" collectionClass="NSMutableArray" id="r0G-eq-cFZ"/>
                         <outletCollection property="weatherDataViews" destination="0Gi-xe-iAR" collectionClass="NSMutableArray" id="i6x-Bg-t7Q"/>
                         <outletCollection property="weatherDataViews" destination="07p-lx-1u2" collectionClass="NSMutableArray" id="pW7-eT-RCO"/>
+                        <outletCollection property="regularLabels" destination="SSH-zJ-x1h" collectionClass="NSMutableArray" id="bCA-PR-Oaj"/>
+                        <outletCollection property="regularLabels" destination="07p-lx-1u2" collectionClass="NSMutableArray" id="mPw-wE-EbN"/>
+                        <outletCollection property="smallLabels" destination="rQs-OS-jje" collectionClass="NSMutableArray" id="NgX-Cf-QxH"/>
+                        <outletCollection property="smallLabels" destination="2HL-Bt-UWb" collectionClass="NSMutableArray" id="uVe-E4-PAD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D91-mt-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -171,14 +171,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-fV-S04">
-                                                    <rect key="frame" x="57.666666666666657" y="76" width="309.33333333333337" height="53"/>
+                                                    <rect key="frame" x="57.666666666666657" y="76" width="303.33333333333337" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="e4s-fV-S04" firstAttribute="trailing" secondItem="hp3-9M-5Cc" secondAttribute="trailing" id="1Nc-Rq-U1z"/>
+                                                <constraint firstItem="e4s-fV-S04" firstAttribute="trailing" secondItem="hp3-9M-5Cc" secondAttribute="trailing" constant="-6" id="1Nc-Rq-U1z"/>
                                                 <constraint firstItem="Stc-l5-eII" firstAttribute="top" secondItem="WlE-Ag-d6Z" secondAttribute="top" constant="8" id="1x7-QS-kax"/>
                                                 <constraint firstAttribute="trailing" secondItem="hp3-9M-5Cc" secondAttribute="trailing" constant="8" id="AD1-Ss-u2U"/>
                                                 <constraint firstItem="e4s-fV-S04" firstAttribute="leading" secondItem="YiE-71-uIG" secondAttribute="trailing" constant="8" id="LX9-x3-vGp"/>
@@ -202,7 +202,7 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YLl-Sg-ftG">
-                                <rect key="frame" x="177.66666666666666" y="401" width="20" height="20"/>
+                                <rect key="frame" x="177" y="401" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -27,7 +27,7 @@ final class WeekViewController: UIViewController {
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView! {
         didSet {
             activityIndicatorView.startAnimating()
-            activityIndicatorView.isHidden = true
+            activityIndicatorView.hidesWhenStopped = true
         }
     }
     
