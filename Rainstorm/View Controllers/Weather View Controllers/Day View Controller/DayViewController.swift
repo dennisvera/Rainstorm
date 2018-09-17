@@ -49,13 +49,6 @@ final class DayViewController: UIViewController {
         }
     }
     
-    @IBOutlet var activityIndicatorView: UIActivityIndicatorView! {
-        didSet {
-            activityIndicatorView.startAnimating()
-            activityIndicatorView.hidesWhenStopped = true
-        }
-    }
-    
     @IBOutlet var weatherDataViews: [UIView]! {
         didSet {
             for view in weatherDataViews {
@@ -63,7 +56,13 @@ final class DayViewController: UIViewController {
             }
         }
     }
-
+    
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            activityIndicatorView.startAnimating()
+            activityIndicatorView.hidesWhenStopped = true
+        }
+    }
     
     //MARK: - Properties
     
@@ -84,24 +83,30 @@ final class DayViewController: UIViewController {
         setupView()
     }
     
-    // MARK: - Helper Methods
-    
+    // MARK: - View Methods
+
     private func setupView() {
         // Configure View
         view.backgroundColor = UIColor.Rainstorm.lightBackgroundColor
     }
     
+    // MARK: - Helper Methods
+
     private func setupViewModel(with viewModel: DayViewModel) {
+        // Hide Activity Indicator View
         activityIndicatorView.stopAnimating()
         
+        // Configure Labels
         dateLabel.text = viewModel.date
         timeLabel.text = viewModel.time
         windSpeedLabel.text = viewModel.windSpeed
         temparatureLabel.text = viewModel.temperature
         descriptionLabel.text = viewModel.summary
         
+        // Configure Icon Image View
         iconImageView.image = viewModel.image
         
+        // Show Weather Data Views
         for view in weatherDataViews {
             view.isHidden = false
         }

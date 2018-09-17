@@ -1,45 +1,44 @@
 //
-//  DayViewModel.swift
+//  WeekDayViewModel.swift
 //  Rainstorm
 //
-//  Created by Dennis Vera on 7/20/18.
+//  Created by Dennis Vera on 9/17/18.
 //  Copyright © 2018 Dennis Vera. All rights reserved.
 //
 
 import UIKit
 
-struct DayViewModel {
+struct WeekDayViewModel {
     
     // MARK: - Properties
     
-    let weatherData: CurrentWeatherConditions
+    let weatherData: ForecastWeatherConditions
     
     private let dateFormatter = DateFormatter()
     
     // MARK: -
 
+    var day: String {
+        // Configure Date Formatter
+        dateFormatter.dateFormat = "EEEE"
+        
+        // Convert Date to String
+        return dateFormatter.string(from: weatherData.time)
+    }
+    
     var date: String {
         // Configure Date Formatter
-        dateFormatter.dateFormat = "EEE, MMMM d YYYY"
+        dateFormatter.dateFormat = "MMMM d"
         
         // Convert Date to String
         return dateFormatter.string(from: weatherData.time)
     }
     
-    var time: String {
-        // Configure Date Formatter
-        dateFormatter.dateFormat = "hh:mm a"
+    var temperature: String {
+        let min = String(format: "%.1f °F", weatherData.temperatureMin)
+        let max = String(format: "%.1f °F", weatherData.temperatureMax)
         
-        // Convert Date to String
-        return dateFormatter.string(from: weatherData.time)
-    }
-    
-    var summary: String {
-        return weatherData.summary
-    }
-    
-    var temperature:String {
-        return String(format: "%.1f °F", weatherData.temperature)
+        return "\(min) - \(max)"
     }
     
     var windSpeed: String {
@@ -49,5 +48,9 @@ struct DayViewModel {
     var image: UIImage? {
         return UIImage.imageForIcon(with: weatherData.icon)
     }
+    
+}
+
+extension WeekDayViewModel: WeekDayRepresentable {
     
 }
