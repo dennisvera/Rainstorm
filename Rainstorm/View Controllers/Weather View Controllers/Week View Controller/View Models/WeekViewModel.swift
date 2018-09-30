@@ -20,7 +20,7 @@ struct WeekViewModel {
     
     // MARK: - Methods
     
-    func viewModel(for index: Int) -> WeekDayViewModel {
+    func viewModel(for index: Int) -> WeekDayViewModel {        
         return WeekDayViewModel(weatherData: weatherData[index])
     }
     

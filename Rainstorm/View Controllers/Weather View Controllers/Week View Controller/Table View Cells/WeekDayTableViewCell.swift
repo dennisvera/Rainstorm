@@ -46,24 +46,24 @@ class WeekDayTableViewCell: UITableViewCell {
             iconImageView.tintColor = UIColor.Rainstorm.baseTintColor
         }
     }
-        
-        // MARK: - Static Properties
-        
-        static var reuseIdentifier: String {
+    
+    // MARK: - Static Properties
+    
+    static var reuseIdentifier: String {
         return String(describing: self)
-        }
-        
-        // MARK: - Initialization
-        
-        override func awakeFromNib() {
+    }
+    
+    // MARK: - Initialization
+    
+    override func awakeFromNib() {
         super.awakeFromNib()
         
         // Configure Cell
         selectionStyle = .none
-        }
+    }
     
     // MARK: - Configuration
-
+    
     func configure(with representable: WeekDayRepresentable) {
         daylabel.text = representable.day
         datelabel.text = representable.date
@@ -71,7 +71,7 @@ class WeekDayTableViewCell: UITableViewCell {
         windSpeedlabel.text = representable.windSpeed
         temperaturelabel.text = representable.temperature
     }
-        
+    
 }
 
 

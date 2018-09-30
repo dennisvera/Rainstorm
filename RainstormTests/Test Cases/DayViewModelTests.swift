@@ -1,5 +1,5 @@
 //
-//  DayViewModelTest.swift
+//  DayViewModelTests.swift
 //  RainstormTests
 //
 //  Created by Dennis Vera on 9/30/18.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Rainstorm
 
-class DayViewModelTest: XCTestCase {
+class DayViewModelTests: XCTestCase {
     
     var viewModel: DayViewModel!
     
