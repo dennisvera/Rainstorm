@@ -38,7 +38,7 @@ struct DayViewModel {
         return weatherData.summary
     }
     
-    var temperature:String {
+    var temperature: String {
         return String(format: "%.1f °F", weatherData.temperature)
     }
     

@@ -10,7 +10,6 @@ import UIKit
 
 final class WeekViewController: UIViewController {
     
-    
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView! {
@@ -62,7 +61,7 @@ final class WeekViewController: UIViewController {
     private func setupViewModel(with viewModel: WeekViewModel) {
         // Hide Activity Indicator View
         activityIndicatorView.stopAnimating()
-        
+                
         // Update Table View
         tableView.reloadData()
         tableView.isHidden = false
@@ -89,7 +88,6 @@ extension WeekViewController: UITableViewDataSource {
         cell.configure(with: viewModel.viewModel(for: indexPath.row))
         
         return cell
-
     }
     
 }
