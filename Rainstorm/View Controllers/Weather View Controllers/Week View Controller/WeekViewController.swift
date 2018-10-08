@@ -64,7 +64,7 @@ final class WeekViewController: UIViewController {
                 
         // Update Table View
         tableView.reloadData()
-        tableView.isHidden = false
+        tableView.isHidden = false        
     }
     
 }

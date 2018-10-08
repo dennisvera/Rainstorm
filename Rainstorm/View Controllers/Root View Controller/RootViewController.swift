@@ -11,6 +11,7 @@ import UIKit
 final class RootViewController: UIViewController {
     
     private enum AlertType {
+        case notAuthorizedToRequestLocation
         case noWeatherDataAvailable
     }
     
@@ -84,9 +85,18 @@ final class RootViewController: UIViewController {
     private func setupViewModel(with viewModel: RootViewModel) {
         // Configure View Model
         viewModel.didFetchWeatherData = { [weak self] (weatherData, error) in
-            if let _ = error {
+            if let error = error {
+                let alertType: AlertType
+                
+                switch error {
+                case .notAuthorizedToRequestLocation:
+                    alertType = .notAuthorizedToRequestLocation
+                case .noWeatherDataAvailable:
+                    alertType = .noWeatherDataAvailable
+                }
+                
                 // Notify User
-                self?.presentAlert(of: .noWeatherDataAvailable)
+                self?.presentAlert(of: alertType)
             } else if let weatherData = weatherData {
                 let dayViewModel = DayViewModel(weatherData: weatherData.current)
                 
@@ -110,6 +120,9 @@ final class RootViewController: UIViewController {
         let message: String
         
         switch alertType {
+        case .notAuthorizedToRequestLocation:
+            title = "Unable to Fetch Weather Data for Your Location"
+            message = "Rainstorm is not authorized to access your current location. This means it's unable to show you the weather for your current location. You can grant Rainstorm access to your current location in the Settings application."
         case .noWeatherDataAvailable:
             title = "Unable to Fetch Weather Data"
             message = "The application is unable to fetch weather data. Please make sure your device is connected over Wi-Fi or cellular."
