@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreLocation
 
 class RootViewModel: NSObject {
     
@@ -15,6 +14,7 @@ class RootViewModel: NSObject {
     
     enum WeatherDataError: Error {
         case notAuthorizedToRequestLocation
+        case failedToRequestLocation
         case noWeatherDataAvailable
     }
     
@@ -26,17 +26,13 @@ class RootViewModel: NSObject {
     
     var didFetchWeatherData: DidFetchWeatherDataCompletion?
     
-    private lazy var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        
-        locationManager.delegate = self
-        
-        return locationManager
-    }()
+    private let locationService: LocationService
     
     // MARK: - Initialization
     
-    override init() {
+    init(locationService: LocationService) {
+        self.locationService = locationService
+        
         super.init()
         
         // Fetch Weather Data
@@ -49,10 +45,24 @@ class RootViewModel: NSObject {
     // MARK: - Helper Methods
     
     func fetchLocation() {
-        locationManager.requestLocation()
+        // Request Location
+        locationService.fetchLocation { [weak self] (location, error) in
+            if let error = error {
+                print("Unable to Fetch Location \(error)")
+                
+                self?.didFetchWeatherData?(nil, .notAuthorizedToRequestLocation)
+                
+            } else if let location = location {
+                self?.fetchWeatherData(for: location)
+            } else {
+                print("Unable to Fetch Location")
+                
+                self?.didFetchWeatherData?(nil, .failedToRequestLocation)
+            }
+        }
     }
     
-    func fetchWeatherData(for location: CLLocation) {
+    func fetchWeatherData(for location: Location) {
         // Initialize Weather Request
         let weatherRequest = WeatherRequest(baseUrl: WeatherService.authenticatedBaseUrl, location: location)
         
@@ -64,7 +74,7 @@ class RootViewModel: NSObject {
             
             DispatchQueue.main.async {
                 if let error = error {
-                    print("Unable to Fetch Wetaher Data \(error)")
+                    print("Unable to Fetch Weather Data \(error)")
                     
                     self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
                 } else if let data = data {
@@ -93,29 +103,6 @@ class RootViewModel: NSObject {
     }
 }
 
-
-extension RootViewModel: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        } else if status == .authorizedWhenInUse {
-            fetchLocation()
-        } else {
-            didFetchWeatherData?(nil, .notAuthorizedToRequestLocation)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        
-        fetchWeatherData(for: location)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Unable to Fetch Location: \(error)")
-    }
-}
 
 
 

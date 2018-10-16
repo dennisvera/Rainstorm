@@ -18,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let rootViewController = window?.rootViewController as? RootViewController else { fatalError("Unexpected Root View Controller") }
         
-        let rootViewModel = RootViewModel()
+        // Initialize Root View Model
+        let rootViewModel = RootViewModel(locationService: LocationManager())
+        
+        // Configure Root View Model
         rootViewController.viewModel = rootViewModel
 
         return true

@@ -12,6 +12,7 @@ final class RootViewController: UIViewController {
     
     private enum AlertType {
         case notAuthorizedToRequestLocation
+        case failedToRequestLocation
         case noWeatherDataAvailable
     }
     
@@ -91,6 +92,8 @@ final class RootViewController: UIViewController {
                 switch error {
                 case .notAuthorizedToRequestLocation:
                     alertType = .notAuthorizedToRequestLocation
+                case .failedToRequestLocation:
+                    alertType = .failedToRequestLocation
                 case .noWeatherDataAvailable:
                     alertType = .noWeatherDataAvailable
                 }
@@ -98,12 +101,16 @@ final class RootViewController: UIViewController {
                 // Notify User
                 self?.presentAlert(of: alertType)
             } else if let weatherData = weatherData {
+                // Initialize Day View Model
                 let dayViewModel = DayViewModel(weatherData: weatherData.current)
                 
+                // Update Day View Controller
                 self?.dayViewController.viewModel = dayViewModel
                 
+                // Initialize Week View Model
                 let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
                 
+                // Update Week View Controller
                 self?.weekViewController.viewModel = weekViewModel
             } else {
                 // Notify user
@@ -123,16 +130,22 @@ final class RootViewController: UIViewController {
         case .notAuthorizedToRequestLocation:
             title = "Unable to Fetch Weather Data for Your Location"
             message = "Rainstorm is not authorized to access your current location. This means it's unable to show you the weather for your current location. You can grant Rainstorm access to your current location in the Settings application."
+        case .failedToRequestLocation:
+            title = "Unable to Fetch Weather Data for Your Location"
+            message = "Rainstorm is not able to fetch your current location due to technical issue."
         case .noWeatherDataAvailable:
             title = "Unable to Fetch Weather Data"
             message = "The application is unable to fetch weather data. Please make sure your device is connected over Wi-Fi or cellular."
         }
         
+        // Intialize Alert Controller
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        // Add Cancel Action
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
+        // Present Alert Contorller
         present(alertController, animated: true)
     }
     

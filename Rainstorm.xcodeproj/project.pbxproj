@@ -17,6 +17,9 @@
 		E156968A21024A0D0015B24A /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968921024A0D0015B24A /* WeatherData.swift */; };
 		E156968D21026BDD0015B24A /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968C21026BDD0015B24A /* DayViewModel.swift */; };
 		E156969021026C450015B24A /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E156968F21026C450015B24A /* WeekViewModel.swift */; };
+		E16BE7CE21763386005E3F7C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16BE7CD21763386005E3F7C /* Location.swift */; };
+		E16BE7D021763BE6005E3F7C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16BE7CF21763BE6005E3F7C /* LocationService.swift */; };
+		E16BE7D321764ADC005E3F7C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16BE7D221764ADC005E3F7C /* LocationManager.swift */; };
 		E1A256452110C3B800E6BF6A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A256442110C3B700E6BF6A /* Styles.swift */; };
 		E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */; };
 		E1B9733920FE9AB300A6A1AB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9733820FE9AB300A6A1AB /* RootViewController.swift */; };
@@ -56,6 +59,9 @@
 		E156968921024A0D0015B24A /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		E156968C21026BDD0015B24A /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		E156968F21026C450015B24A /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
+		E16BE7CD21763386005E3F7C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E16BE7CF21763BE6005E3F7C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		E16BE7D221764ADC005E3F7C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E1A256442110C3B700E6BF6A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		E1B9733320FE9AB300A6A1AB /* Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B9733620FE9AB300A6A1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 			children = (
 				E126701720FFF461001FDEAC /* WeatherRequest.swift */,
 				E15696862101497B0015B24A /* DarkSkyResponse.swift */,
+				E16BE7CD21763386005E3F7C /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E156968921024A0D0015B24A /* WeatherData.swift */,
+				E16BE7CF21763BE6005E3F7C /* LocationService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -145,6 +153,14 @@
 				E1EC568821500F6400A05760 /* WeekDayViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		E16BE7D121764AC1005E3F7C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E16BE7D221764ADC005E3F7C /* LocationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E1B9732A20FE9AB300A6A1AB = {
@@ -168,6 +184,7 @@
 		E1B9733520FE9AB300A6A1AB /* Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
+				E16BE7D121764AC1005E3F7C /* Managers */,
 				E1B9734820FE9B3000A6A1AB /* Application Delegate */,
 				E126701620FFF434001FDEAC /* Models */,
 				E1B9734920FE9B6C00A6A1AB /* View Controllers */,
@@ -437,6 +454,7 @@
 			files = (
 				E1B9735920FEAB8E00A6A1AB /* UIStoryboard.swift in Sources */,
 				E1EC5687214FFC0500A05760 /* WeekDayTableViewCell.swift in Sources */,
+				E16BE7D021763BE6005E3F7C /* LocationService.swift in Sources */,
 				E1A256452110C3B800E6BF6A /* Styles.swift in Sources */,
 				E1B9733920FE9AB300A6A1AB /* RootViewController.swift in Sources */,
 				E1B9733720FE9AB300A6A1AB /* AppDelegate.swift in Sources */,
@@ -449,7 +467,9 @@
 				E1EC568C215013EE00A05760 /* WeekDayRepresentable.swift in Sources */,
 				E156969021026C450015B24A /* WeekViewModel.swift in Sources */,
 				E126701B20FFF630001FDEAC /* Configuration.swift in Sources */,
+				E16BE7CE21763386005E3F7C /* Location.swift in Sources */,
 				E126701E21000C14001FDEAC /* RootViewModel.swift in Sources */,
+				E16BE7D321764ADC005E3F7C /* LocationManager.swift in Sources */,
 				E15696872101497B0015B24A /* DarkSkyResponse.swift in Sources */,
 				E1B9735720FEAAF300A6A1AB /* UIViewController.swift in Sources */,
 				E156968D21026BDD0015B24A /* DayViewModel.swift in Sources */,
