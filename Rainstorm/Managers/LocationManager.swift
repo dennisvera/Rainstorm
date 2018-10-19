@@ -44,8 +44,12 @@ extension LocationManager: CLLocationManagerDelegate {
             //Fetch Location
             locationManager.requestLocation()
         } else {
-            didFetchLocation?(nil, .notAuthorizedToRequestLocation)
+            let result: LocationsServiceResult = .failure(.notAuthorizedToRequestLocation)
             
+            // Invoke Completion Handler
+            didFetchLocation?(result)
+            
+            // Reset Completion Handler
             didFetchLocation = nil
         }
     }
@@ -53,8 +57,12 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         
-        didFetchLocation?(Location(location: location), nil)
+        let result: LocationsServiceResult = .success(Location(location: location))
+
+        // Invoke Completion Handler
+        didFetchLocation?(result)
         
+        // Reset Completion Handler
         didFetchLocation = nil
     }
     

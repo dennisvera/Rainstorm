@@ -8,15 +8,23 @@
 
 import Foundation
 
-enum LocationServiceError {
-    
+enum LocationServiceError: Error {
     case notAuthorizedToRequestLocation
+}
+
+enum LocationsServiceResult {
+    case success(Location)
+    case failure(LocationServiceError)
 }
 
 protocol LocationService {
     
-    typealias FetchLocationCompletion = (Location?, LocationServiceError?) -> Void
+    // MARK: - Typealias
     
+    typealias FetchLocationCompletion = (LocationsServiceResult) -> Void
+    
+    // MARK: - Methods
+
     func fetchLocation(completion: @escaping FetchLocationCompletion)
     
 }

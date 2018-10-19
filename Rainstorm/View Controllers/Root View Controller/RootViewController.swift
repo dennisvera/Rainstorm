@@ -10,6 +10,8 @@ import UIKit
 
 final class RootViewController: UIViewController {
     
+    // MARK: Types
+
     private enum AlertType {
         case notAuthorizedToRequestLocation
         case failedToRequestLocation
@@ -85,8 +87,21 @@ final class RootViewController: UIViewController {
     
     private func setupViewModel(with viewModel: RootViewModel) {
         // Configure View Model
-        viewModel.didFetchWeatherData = { [weak self] (weatherData, error) in
-            if let error = error {
+        viewModel.didFetchWeatherData = { [weak self] (result) in
+            switch result {
+            case .success(let weatherData):
+                // Initialize Day View Model
+                let dayViewModel = DayViewModel(weatherData: weatherData.current)
+                
+                // Update Day View Controller
+                self?.dayViewController.viewModel = dayViewModel
+                
+                // Initialize Week View Model
+                let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
+                
+                // Update Week View Controller
+                self?.weekViewController.viewModel = weekViewModel
+            case .failure(let error):
                 let alertType: AlertType
                 
                 switch error {
@@ -100,21 +115,6 @@ final class RootViewController: UIViewController {
                 
                 // Notify User
                 self?.presentAlert(of: alertType)
-            } else if let weatherData = weatherData {
-                // Initialize Day View Model
-                let dayViewModel = DayViewModel(weatherData: weatherData.current)
-                
-                // Update Day View Controller
-                self?.dayViewController.viewModel = dayViewModel
-                
-                // Initialize Week View Model
-                let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
-                
-                // Update Week View Controller
-                self?.weekViewController.viewModel = weekViewModel
-            } else {
-                // Notify user
-                self?.presentAlert(of: .noWeatherDataAvailable)
             }
         }
     }
@@ -145,7 +145,7 @@ final class RootViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        // Present Alert Contorller
+        // Present Alert Controller
         present(alertController, animated: true)
     }
     

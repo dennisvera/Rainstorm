@@ -184,15 +184,15 @@
 		E1B9733520FE9AB300A6A1AB /* Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
-				E16BE7D121764AC1005E3F7C /* Managers */,
 				E1B9734820FE9B3000A6A1AB /* Application Delegate */,
-				E126701620FFF434001FDEAC /* Models */,
 				E1B9734920FE9B6C00A6A1AB /* View Controllers */,
-				E1B9734B20FE9C7100A6A1AB /* Storyboards */,
 				E126701920FFF616001FDEAC /* Configuration */,
-				E1569688210249720015B24A /* Protocols */,
+				E1B9734B20FE9C7100A6A1AB /* Storyboards */,
 				E1B9735520FEAAC500A6A1AB /* Extensions */,
+				E1569688210249720015B24A /* Protocols */,
 				E1B9734C20FE9CA000A6A1AB /* Resources */,
+				E16BE7D121764AC1005E3F7C /* Managers */,
+				E126701620FFF434001FDEAC /* Models */,
 				E1B9734D20FE9CB700A6A1AB /* Supporting Files */,
 			);
 			path = Rainstorm;
