@@ -83,10 +83,10 @@ extension WeekViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WeekDayTableViewCell.reuseIdentifier, for: indexPath) as? WeekDayTableViewCell else { fatalError("Unable to Dequeue Week Day Table View Cell") }
         
         guard let viewModel = viewModel else { fatalError("No View Model Present") }
-        
+
         // Configure Cell
         cell.configure(with: viewModel.viewModel(for: indexPath.row))
-        
+                
         return cell
     }
     

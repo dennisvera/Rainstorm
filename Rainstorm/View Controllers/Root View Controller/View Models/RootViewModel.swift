@@ -47,6 +47,9 @@ class RootViewModel: NSObject {
         
         // Fetch Users Location
         fetchLocation()
+        
+        // 
+        setupNotificationHandling()
     }
     
     // MARK: - Helper Methods
@@ -83,7 +86,7 @@ class RootViewModel: NSObject {
                     print("Unable to Fetch Weather Data \(error)")
                     
                     let result: WeatherDataResults = .failure(.notAuthorizedToRequestLocation)
-
+                    
                     self?.didFetchWeatherData?(result)
                 } else if let data = data {
                     // Initialize JSON Decoder
@@ -95,26 +98,78 @@ class RootViewModel: NSObject {
                         // Decode JSON Response
                         let darkSkyResponse = try decoder.decode(DarkSkyResponse.self, from: data)
                         
+                        // WeatherData Result
                         let result: WeatherDataResults = .success(darkSkyResponse)
-
+                        
+                        UserDefaults.didFetchWeatherData = Date()
+                        
                         // Invoke Completion Handler
                         self?.didFetchWeatherData?(result)
                     } catch {
                         print("Uneable to Decode JSON Response: \(error)")
                         
                         let result: WeatherDataResults = .failure(.notAuthorizedToRequestLocation)
-
+                        
                         self?.didFetchWeatherData?(result)
                     }
                 } else {
                     let result: WeatherDataResults = .failure(.notAuthorizedToRequestLocation)
-
+                    
                     self?.didFetchWeatherData?(result)
                 }
             }
             }.resume()
     }
+    
+    private func setupNotificationHandling() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil,
+                                               queue: OperationQueue.main) { [weak self] (_) in
+                                                guard let didFetchWeatherData = UserDefaults.didFetchWeatherData else {
+                                                    self?.refresh()
+                                                    return
+                                                }
+                                                
+                                                if Date().timeIntervalSince(didFetchWeatherData) > Configuration.refreshThreshold {
+                                                    self?.refresh()
+                                                }
+        }
+    }
+    
+    private func refresh() {
+        fetchLocation()
+    }
+    
 }
+
+extension UserDefaults {
+    
+    private enum Keys {
+        static let didFetchWeatherData = "didFetchWeatherData"
+    }
+    
+    fileprivate class var didFetchWeatherData: Date? {
+        get {
+            return UserDefaults.standard.object(forKey: Keys.didFetchWeatherData) as? Date
+        }
+        set(newValue){
+            UserDefaults.standard.set(newValue, forKey: Keys.didFetchWeatherData)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
