@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol WeekViewControllerDelegate: class {
+    func controllerDidRefresh(_ controller: WeekViewController)
+}
+
 final class WeekViewController: UIViewController {
     
     // MARK: - Outlets
@@ -20,6 +24,8 @@ final class WeekViewController: UIViewController {
             tableView.estimatedRowHeight = 44.0
             tableView.rowHeight = UITableViewAutomaticDimension
             tableView.showsVerticalScrollIndicator = false
+            
+            tableView.refreshControl = refreshControl
         }
     }
     
@@ -31,37 +37,55 @@ final class WeekViewController: UIViewController {
     }
     
     // MARK: - Properties
-
+    
+    weak var delegate: WeekViewControllerDelegate?
+    
     var viewModel: WeekViewModel? {
         didSet {
-            guard let viewModel = viewModel else { return }
+            refreshControl.endRefreshing()
             
-            setupViewModel(with: viewModel)
+            if let viewModel = viewModel {
+                // Setup View Model
+                setupViewModel(with: viewModel)
+            }
         }
     }
-
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.tintColor = UIColor.Rainstorm.baseTintColor
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
     // MARK: - View Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Setup View
         setupView()
     }
     
-    // MARK: - Helper Method
+    // MARK: - View Methods
     
     private func setupView() {
         // Configure View
         view.backgroundColor = .white
     }
     
+    @objc private func refresh(_ sender: UIRefreshControl) {
+        delegate?.controllerDidRefresh(self)
+    }
+    
     // MARK: - Helper Methods
-
+    
     private func setupViewModel(with viewModel: WeekViewModel) {
         // Hide Activity Indicator View
         activityIndicatorView.stopAnimating()
-                
+        
         // Update Table View
         tableView.reloadData()
         tableView.isHidden = false        
@@ -83,29 +107,14 @@ extension WeekViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WeekDayTableViewCell.reuseIdentifier, for: indexPath) as? WeekDayTableViewCell else { fatalError("Unable to Dequeue Week Day Table View Cell") }
         
         guard let viewModel = viewModel else { fatalError("No View Model Present") }
-
+        
         // Configure Cell
         cell.configure(with: viewModel.viewModel(for: indexPath.row))
-                
+        
         return cell
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

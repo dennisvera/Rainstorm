@@ -38,6 +38,7 @@ class RootViewModel: NSObject {
     // MARK: - Initialization
     
     init(locationService: LocationService) {
+        // Set Location Service
         self.locationService = locationService
         
         super.init()
@@ -45,11 +46,11 @@ class RootViewModel: NSObject {
         // Fetch Weather Data
         fetchWeatherData(for: Defaults.location)
         
-        // Fetch Users Location
-        fetchLocation()
-        
-        // 
+        // Fetch Location Every Time the User Opens the App
         setupNotificationHandling()
+        
+        // Fetch Location
+        fetchLocation()
     }
     
     // MARK: - Helper Methods
@@ -136,7 +137,7 @@ class RootViewModel: NSObject {
         }
     }
     
-    private func refresh() {
+    func refresh() {
         fetchLocation()
     }
     
@@ -152,35 +153,11 @@ extension UserDefaults {
         get {
             return UserDefaults.standard.object(forKey: Keys.didFetchWeatherData) as? Date
         }
-        set(newValue){
+        set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.didFetchWeatherData)
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
